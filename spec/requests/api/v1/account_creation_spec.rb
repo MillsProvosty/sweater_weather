@@ -14,10 +14,10 @@ describe 'Account Creation Endpoint' do
   end
 
   it 'Returns api key upon account creation' do
-
-    binding.pry
     expect(response).to be_successful
-    api_key = response.body
-    binding.pry
+
+    key = JSON.parse(response.body)
+
+    expect(key["api_key"]).to eq(true)
   end
 end
