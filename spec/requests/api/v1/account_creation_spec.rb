@@ -4,7 +4,7 @@ describe 'Account Creation Endpoint' do
   before :each do
     @params = {
       "email": "whatever@example.com",
-      "password": "password"
+      "password": "password",
       "password_confirmation": "password"
     }
 
