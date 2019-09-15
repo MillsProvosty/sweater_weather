@@ -3,6 +3,8 @@ class ForecastFacade
     @location = location
   end
 
+  
+
   private
     attr_reader :location
 end

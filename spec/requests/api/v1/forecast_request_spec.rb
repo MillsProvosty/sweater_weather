@@ -5,13 +5,22 @@ describe "Forecast Endpoint" do
     get '/api/v1/forecast?location=denver,co'
   end
 
-  it "response is successful" do
-
+  it "response is includes latitude and longitude" do
     expect(response).to be_successful
-    binding.pry
+
+    city = JSON.parse(response.body)
+
+    expect(city["results"].first["geometry"]["bounds"]["northeast"].first[0]).to eq("lat")
+    expect(city["results"].first["geometry"]["bounds"]["northeast"].first[0]).to eq("lat")
   end
 
-  xit "sends forecast details" do
+  it "sends forecast details" do
+    expect(response).to be_successful
+
+    forecast = JSON.parse(response.body)
+    expect(forecast["currently"]["summary"]).to be_kind_of(String)
+    expect(forecast["latitude"]).to be_kind_of(Float)
+    expect(forecast["currently"]["time"]).to be_kind_of(Integer)
   end
 end
 
