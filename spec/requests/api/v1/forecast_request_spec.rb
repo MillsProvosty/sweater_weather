@@ -28,26 +28,3 @@ describe "Forecast Endpoint" do
     expect(forecast["currently"]["uvIndex"]).to be_kind_of(Integer)
   end
 end
-
-
-# ex:
-# "currently": {
-#         "time": 1568507694,
-#         "summary": "Clear",
-#         "icon": "clear-day",
-#         "nearestStormDistance": 76,
-#         "nearestStormBearing": 136,
-#         "precipIntensity": 0,
-#         "precipProbability": 0,
-#         "temperature": 71.89,
-#         "apparentTemperature": 71.89,
-#         "dewPoint": 52.64,
-#         "humidity": 0.51,
-#         "pressure": 1012.25,
-#         "windSpeed": 8.41,
-#         "windGust": 13.38,
-#         "windBearing": 257,
-#         "cloudCover": 0.09,
-#         "uvIndex": 1,
-#         "visibility": 6.642,
-#         "ozone": 288.9
