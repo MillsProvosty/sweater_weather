@@ -6,7 +6,9 @@ describe "Forecast Endpoint" do
   end
 
   it "response is successful" do
+
     expect(response).to be_successful
+    binding.pry
   end
 
   xit "sends forecast details" do
