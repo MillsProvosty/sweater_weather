@@ -14,8 +14,23 @@ class ForecastFacade
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def latitude
+    @_latitude || geocode_location[:results].first[:geometry][:location][:lat]
+  end
+
+  def longitude
+    @_longitude || geocode_location[:results].first[:geometry][:location][:lng]
+  end
+
   def return_forecast
-    binding.pry
+    geocode_location
+
+    conn = Faraday.new('https://api.darksky.net') do |f|
+      f.adapter Faraday.default_adapter
+    end
+
+    response = conn.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{latitude},#{longitude}")
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private
