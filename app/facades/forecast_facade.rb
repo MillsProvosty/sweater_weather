@@ -11,6 +11,10 @@ class ForecastFacade
     end
 
     response = conn.get('maps/api/geocode/json?')
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def return_forecast
     binding.pry
   end
 

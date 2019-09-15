@@ -14,10 +14,12 @@ describe "Forecast Endpoint" do
     expect(city["results"].first["geometry"]["bounds"]["northeast"].first[0]).to eq("lat")
   end
 
-  it "sends forecast details" do
+  xit "sends forecast details" do
     expect(response).to be_successful
 
     forecast = JSON.parse(response.body)
+
+    binding.pry
     expect(forecast["currently"]["summary"]).to be_kind_of(String)
     expect(forecast["latitude"]).to be_kind_of(Float)
     expect(forecast["currently"]["time"]).to be_kind_of(Integer)
