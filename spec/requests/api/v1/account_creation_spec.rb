@@ -15,8 +15,8 @@ describe 'Account Creation Endpoint' do
 
   it 'Returns api key upon account creation' do
 
-    expect(reponse).to be_successful
-
+    binding.pry
+    expect(response).to be_successful
     api_key = response.body
     binding.pry
   end
