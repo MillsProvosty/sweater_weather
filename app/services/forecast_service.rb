@@ -4,8 +4,15 @@ class ForecastService
   end
 
   def get_location
-    geo_response
     darksky_response
+  end
+
+  def latitude
+    @_latitude || geo_response[:results].first[:geometry][:location][:lat]
+  end
+
+  def longitude
+    @_longitude || geo_response[:results].first[:geometry][:location][:lng]
   end
 
   private
@@ -20,18 +27,11 @@ class ForecastService
       end
     end
 
-    def geo_reponse
-      reponse = geocode_location.get('maps/api/geocode/json?')
+    def geo_response
+      response = geocode_location.get('maps/api/geocode/json?')
       JSON.parse(response.body, symbolize_names: true)
     end
 
-    def latitude
-      @_latitude || geocode_location[:results].first[:geometry][:location][:lat]
-    end
-
-    def longitude
-      @_longitude || geocode_location[:results].first[:geometry][:location][:lng]
-    end
 
     def darksky_connection
       Faraday.new('https://api.darksky.net') do |f|
@@ -40,7 +40,7 @@ class ForecastService
     end
 
     def darksky_response
-      darksky_connection.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{latitude},#{longitude}")
+      response = darksky_connection.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{latitude},#{longitude}")
       JSON.parse(response.body, symbolize_names: true)
     end
 end

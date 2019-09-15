@@ -4,7 +4,7 @@ class ForecastFacade
   end
 
   def return_forecast
-    ForecastService.new(location)
+    ForecastService.new(location).get_location
   end
 
   private
