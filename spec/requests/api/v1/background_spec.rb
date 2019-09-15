@@ -8,6 +8,7 @@ describe "Backgrounds Endpoint" do
   it "returns the background for location" do
     expect(response).to be_successful
 
-    background = JSON.parse(response.body)
+    background = response.body
+    expect(background).to be_kind_of(String)
   end
 end
