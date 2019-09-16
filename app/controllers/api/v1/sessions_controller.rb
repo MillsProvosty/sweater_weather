@@ -4,7 +4,12 @@ class Api::V1::SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       render status: :created, json: { api_key: user.api_key }
     else
-      render status: :bad_request, json: { error: user.errors.full_messages.join('. ') }
+      error
     end
+  end
+
+  private
+  def error
+    render status: :unauthorized, json: { error: "Incorrect username or password." }
   end
 end
