@@ -5,7 +5,6 @@ class ForecastFacade
 
   def return_forecast
     Forecast.new(location, forecast_service)
-    binding.pry
   end
 
 
