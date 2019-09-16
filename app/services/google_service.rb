@@ -4,7 +4,7 @@ class GoogleService
   end
 
   def geocode_location
-    JSON.parse(geo_response.body, symbolize_names: true)
+    geo_response
   end
 
   private

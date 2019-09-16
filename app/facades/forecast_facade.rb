@@ -8,7 +8,7 @@ class ForecastFacade
   end
 
   def geocode_results
-    geocode_service
+    forecast_service
     #whats being returned?
     binding.pry
   end
@@ -20,7 +20,7 @@ class ForecastFacade
       @_geocode_service ||= GoogleService.new(location).geocode_location
     end
 
-    def forcast_service
-      @_forcast_service ||= ForecastService.new(geocoded_location).forecast_info
+    def forecast_service
+      @_forecast_service ||= ForecastService.new(geocode_service).forecast_info
     end
 end
