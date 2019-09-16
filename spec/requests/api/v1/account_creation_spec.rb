@@ -8,6 +8,12 @@ describe 'Account Creation Endpoint' do
       "password_confirmation": "password"
     }
 
+    @params2 = {
+      "email": "new@example.com",
+      "password": nil,
+    }
+
+
     get '/api/v1/users', params: @params
 
     @user = User.last
@@ -19,5 +25,15 @@ describe 'Account Creation Endpoint' do
     key = JSON.parse(response.body)
 
     expect(key["api_key"]).to eq(true)
+  end
+
+  it 'throws an error if params incorrect' do
+    get '/api/v1/users', params: @params2
+
+    expect(response).to have_http_status(400)
+
+    error = JSON.parse(response.body)
+
+    expect(error["error"]).to eq("There was an error, please try again.")
   end
 end
