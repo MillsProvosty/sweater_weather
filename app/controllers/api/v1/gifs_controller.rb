@@ -15,10 +15,13 @@ class Api::V1::GifsController < ApplicationController
       summary << Summary.new(f[:summary], f[:time])
     end
 
-    gifs = []
-    gifs = summary.each do |s|
-      gifs << GifsFacade.new(s.summary).return_gifs
+    gifs_array = []
+    summary.map do |s|
+      gifs_array << GifsFacade.new(s.summary).return_gifs
     end
+
+    
+
     binding.pry
   end
 end

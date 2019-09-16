@@ -13,7 +13,6 @@ class GifsService
 
   response = conn.get '/v1/gifs/search'
   url = JSON.parse(response.body, symbolize_names: true)[:data].first[:images][:original_still][:url]
-binding.pry
   end
 
   private
