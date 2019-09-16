@@ -4,6 +4,10 @@ describe 'Roadtrip Endpoint' do
   before :each do
     @user = create(:user)
 
+    @headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'}
+
     @api_key = @user.api_key
 
     @params = {
@@ -12,13 +16,14 @@ describe 'Roadtrip Endpoint' do
       "api_key": @api_key
     }
 
-    post '/api/v1/road_trip', params: @params
+    post '/api/v1/road_trip', params: @params, headers: @headers
   end
 
   it 'Returns successful response' do
     expect(response).to be_successful
 
     roadtrip = JSON.parse(response.body)
+    binding.pry
   end
 end
 
