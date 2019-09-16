@@ -13,6 +13,7 @@ describe "Forecast Endpoint" do
     expect(response).to be_successful
 
     forecast = JSON.parse(response.body)
+    binding.pry
 
     expect(forecast["currently"]["summary"]).to be_kind_of(String)
     expect(forecast["latitude"]).to be_kind_of(Float)
