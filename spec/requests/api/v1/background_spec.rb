@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe "Backgrounds Endpoint" do
   before(:each) do
-    get '/api/v1/backgrounds?location=denver,co'
+    @headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'}
+
+    get '/api/v1/backgrounds?location=denver,co', headers: @headers
   end
 
   it "returns the background for location" do
