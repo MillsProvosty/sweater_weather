@@ -5,6 +5,5 @@ class Summary
   def initialize(summary, time)
     @summary = summary
     @time = time
-    binding.pry
   end
 end

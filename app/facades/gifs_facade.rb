@@ -5,7 +5,7 @@ class GifsFacade
 
 
   def return_gifs
-    render json: GifsService.new(query)
+    GifsService.new(query).search_gifs
   end
 
   private

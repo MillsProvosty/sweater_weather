@@ -11,11 +11,14 @@ class Api::V1::GifsController < ApplicationController
     forecast_summary = ForecastFacade.new(params[:location]).return_forecast
 
     summary = []
-    forecast_summary[:daily][:data].each do |f|
+    forecast_summary[:daily][:data][0..4].each do |f|
       summary << Summary.new(f[:summary], f[:time])
     end
 
-    # summary = forecast_summary[:daily][:data].first[:summary]
-    render json: GifsFacade.new(forecast_summary).return_gifs
+    gifs = []
+    gifs = summary.each do |s|
+      gifs << GifsFacade.new(s.summary).return_gifs
+    end
+    binding.pry
   end
 end
