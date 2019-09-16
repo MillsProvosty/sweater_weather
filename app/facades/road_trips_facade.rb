@@ -14,7 +14,8 @@ class RoadTripsFacade
 
     response = conn.get '/maps/api/directions/json?'
     response.body
-    
+    this = JSON.parse(response.body)
+    binding.pry
   end
 
   private
