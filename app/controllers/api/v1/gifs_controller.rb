@@ -10,17 +10,17 @@ class Api::V1::GifsController < ApplicationController
 
     forecast_summary = ForecastFacade.new(params[:location]).return_forecast
 
-    summary = []
+    summaries = []
     forecast_summary[:daily][:data][0..4].each do |f|
-      summary << Summary.new(f[:summary], f[:time])
+      summaries << Summary.new(f[:summary], f[:time])
     end
 
-    gifs_array = []
+    gif_urls = []
     summary.map do |s|
-      gifs_array << GifsFacade.new(s.summary).return_gifs
+      gif_urls << GifsFacade.new(s.summary).return_gifs
     end
 
-    
+    render json: GiphySearchSerializer.new(summaries, gif_urls)
 
     binding.pry
   end
