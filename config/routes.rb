@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'backgrounds', to: 'backgrounds#show'
       get 'users', to: 'users#create'
       get 'sessions', to: 'sessions#create'
+      get 'gifs', to: 'gifs#index'
     end
   end
 end
