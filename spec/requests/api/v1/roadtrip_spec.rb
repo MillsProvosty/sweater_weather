@@ -2,13 +2,17 @@ require 'rails_helper'
 
 describe 'Roadtrip Endpoint' do
   before :each do
-    @body = {
+    @user = create(:user)
+
+    @api_key = @user.api_key
+
+    @params = {
       "origin": "Denver,CO",
       "destination": "Pueblo,CO",
-      "api_key": "jgn983hy48thw9begh98h4539h4"
+      "api_key": @api_key
     }
 
-    post '/api/v1/road_trip', body: @body
+    post '/api/v1/road_trip', params: @params
   end
 
   it 'Returns successful response' do
