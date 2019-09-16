@@ -1,12 +1,11 @@
 class Api::V1::RoadTripsController < ApplicationController
   def create
-      binding.pry
       api_key = params["api_key"]
-      destination = params["destination"]
       origin = params["origin"]
-    user = User.find_by(params["api_key"])
+      destination = params["destination"]
+      user = User.find_by(params["api_key"])
     if user
-      render json: RoadTripsFacade.new(destination, origin).response
+      render json: RoadTripsFacade.new(origin, destination).response
     else
       trip_error
     end
@@ -15,6 +14,6 @@ class Api::V1::RoadTripsController < ApplicationController
 
   private
     def trip_error
-      
+      render status: :unauthorized, json: { error: "Unauthorized user, please try again." }
     end
 end
