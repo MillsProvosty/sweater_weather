@@ -3,7 +3,6 @@ class GifsFacade
     @query = query
   end
 
-
   def return_gifs
     GifsService.new(query).search_gifs
   end
