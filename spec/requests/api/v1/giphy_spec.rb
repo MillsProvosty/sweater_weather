@@ -9,9 +9,10 @@ describe "Giphy Endpoint" do
     expect(response).to be_successful
 
     giphy = JSON.parse(response.body)
-binding.pry
-    expect(giphy["data"]["images"].count).to eq(5)
-    
-  end
 
+    expect(giphy["data"]["images"].count).to eq(5)
+    expect(giphy["data"]["images"].first["time"]).to be_kind_of(String)
+    expect(giphy["data"]["images"].first["url"]).to be_kind_of(String)
+    expect(giphy["copyright"]).to eq("2019")
+  end
 end
