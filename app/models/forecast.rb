@@ -1,12 +1,11 @@
 class Forecast
   def initialize(location, forecast_info)
-    binding.pry
     @id = nil
     @location = location
     @forecast_info = forecast_info
     @current_weather = current_weather
-    @hourly_weather = hourly_weather
     @daily_weather = daily_weather
+    @hourly_weather = hourly_weather
   end
 
   def current_weather
@@ -25,9 +24,29 @@ class Forecast
     }
   end
 
+  def daily_weather
+    forecast_info[:daily][:data][0..7].map do |day|
+      { day: Time.at(day[:time]),
+        summary: day[:summary],
+        icon: day[:icon],
+        precipitation: day[:precipProbability],
+        high: day[:temperatureHigh],
+        low: day[:temperatureLow]
+      }
+    end
+  end
+
+  def hourly_weather
+    forecast_info[:hourly][:data][0..11].map do |hour|
+      { time: Time.at(hour[:time]),
+        summary: hour[:summary],
+        temperature: hour[:temperature],
+        icon: hour[:icon]
+      }
+    end
+  end
 
   private
     attr_reader :location,
                 :forecast_info
-
 end
