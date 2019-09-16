@@ -4,7 +4,7 @@ class ForecastService
   end
 
   def forecast_info
-    Forecast.new(darksky_response)
+    darksky_response
   end
 
   def latitude

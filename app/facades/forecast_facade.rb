@@ -4,14 +4,10 @@ class ForecastFacade
   end
 
   def return_forecast
-    Forecast.new(geocode_results, forecast_service)
-  end
-
-  def geocode_results
-    forecast_service
-    #whats being returned?
+    Forecast.new(location, forecast_service)
     binding.pry
   end
+
 
   private
     attr_reader :location
