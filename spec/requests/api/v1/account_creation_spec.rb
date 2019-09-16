@@ -14,7 +14,7 @@ describe 'Account Creation Endpoint' do
     }
 
 
-    get '/api/v1/users', params: @params
+    post '/api/v1/users', params: @params
 
     @user = User.last
   end
@@ -28,7 +28,7 @@ describe 'Account Creation Endpoint' do
   end
 
   it 'throws an error if params incorrect' do
-    get '/api/v1/users', params: @params2
+    post '/api/v1/users', params: @params2
 
     expect(response).to have_http_status(400)
 

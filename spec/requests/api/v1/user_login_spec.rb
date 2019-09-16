@@ -15,7 +15,7 @@ describe "Login Endpoint" do
       "password": "wongpassword"
     }
 
-    get '/api/v1/sessions', params: @params
+    post '/api/v1/sessions', params: @params
   end
 
   it 'returns api key for logged in user' do
@@ -27,7 +27,7 @@ describe "Login Endpoint" do
   end
 
   it 'returns error with incorrect password' do
-    get '/api/v1/sessions', params: @params2
+    post '/api/v1/sessions', params: @params2
 
     expect(response).to have_http_status(401)
 
