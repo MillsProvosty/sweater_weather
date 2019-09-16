@@ -5,7 +5,8 @@ class GiphySearchSerializer
   end
 
   def renders_hash
-    {data: {images: [ sorts_info ] } }
+    copyright = "2019"
+    {data: {images: [ sorts_info ] }, copyright: copyright }
   end
 
   def sorts_info

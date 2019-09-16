@@ -12,7 +12,6 @@ class Api::V1::GifsController < ApplicationController
       gif_urls << GifsFacade.new(s.summary).return_gifs
     end
 
-    this = GiphySearchSerializer.new(summaries, gif_urls).renders_hash
-    binding.pry
+    render json: GiphySearchSerializer.new(summaries, gif_urls).renders_hash
   end
 end
