@@ -21,3 +21,7 @@ describe 'Roadtrip Endpoint' do
     roadtrip = JSON.parse(response.body)
   end
 end
+
+# Estimated Travel Time
+# Hour of Arrival
+# Weather at hour of arrival, includes tem, summary

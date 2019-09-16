@@ -15,6 +15,8 @@ class RoadTripsFacade
     response = conn.get '/maps/api/directions/json?'
     response.body
     this = JSON.parse(response.body)
+
+    estimated_time = this
     binding.pry
   end
 
