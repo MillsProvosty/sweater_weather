@@ -1,5 +1,8 @@
 class Api::V1::GifsController < ApplicationController
   def index
-    render json: GifsFacade.new(params[:location]).return_gifs
+    forecast_summary = ForecastFacade.new(params[:location]).return_forecast
+    binding.pry
+    summary = forecast_summary[:daily][:data].first[:summary]
+    render json: GifsFacade.new(summary).return_gifs
   end
 end
