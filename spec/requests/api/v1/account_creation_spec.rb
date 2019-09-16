@@ -20,4 +20,8 @@ describe 'Account Creation Endpoint' do
 
     expect(key["api_key"]).to eq(true)
   end
+
+  it 'throws an error if params incorrect' do
+     
+  end
 end

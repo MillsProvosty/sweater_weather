@@ -30,7 +30,7 @@ describe "Login Endpoint" do
     get '/api/v1/sessions', params: @params2
 
     expect(response).to have_http_status(401)
-binding.pry
-    nar = response.body
+    error = JSON.parse(response.body)
+    expect(error["error"]).to eq("Incorrect username or password.")
   end
 end
