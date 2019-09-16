@@ -35,12 +35,13 @@ class ForecastService
 
     def darksky_connection
       Faraday.new('https://api.darksky.net') do |f|
+        f.params['time'] = "daily"
         f.adapter Faraday.default_adapter
       end
     end
 
     def darksky_response
       response = darksky_connection.get("/forecast/#{ENV['DARKSKY_API_KEY']}/#{latitude},#{longitude}")
-      JSON.parse(response.body, symbolize_names: true)
+      this = JSON.parse(response.body, symbolize_names: true)
     end
 end
