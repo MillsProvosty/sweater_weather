@@ -1,4 +1,4 @@
-class GiphySearchSerializer
+class GiphySearch
   def initialize(summaries, urls)
     @summaries = summaries
     @urls = urls
@@ -6,7 +6,7 @@ class GiphySearchSerializer
 
   def renders_hash
     copyright = "2019"
-    {data: {images: [ sorts_info ] }, copyright: copyright }
+    {data: {images: sorts_info }, copyright: copyright }
   end
 
   def sorts_info
@@ -23,5 +23,6 @@ class GiphySearchSerializer
           object[:url] = @urls[index]
       end
     end
+    hash.flatten
   end
 end

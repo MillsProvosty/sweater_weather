@@ -4,6 +4,6 @@ class Summary
 
   def initialize(summary, time)
     @summary = summary
-    @time = time
+    @time = time.to_s
   end
 end
