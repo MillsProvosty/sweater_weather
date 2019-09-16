@@ -4,15 +4,20 @@ class ForecastFacade
   end
 
   def return_forecast
-    Forecast.new(geocode_service, forecast_service)
-    # ForecastService.new(location).get_location
+    Forecast.new(geocode_results, forecast_service)
+  end
+
+  def geocode_results
+    geocode_service
+    #whats being returned?
+    binding.pry
   end
 
   private
     attr_reader :location
 
     def geocode_service
-      @_geocode_service ||= GoogleService.geocode_location(location)
+      @_geocode_service ||= GoogleService.new(location).geocode_location
     end
 
     def forcast_service
