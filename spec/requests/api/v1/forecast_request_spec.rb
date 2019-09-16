@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe "Forecast Endpoint" do
   before(:each) do
-    get '/api/v1/forecast?location=denver,co'
+    @headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'}
+
+    get '/api/v1/forecast?location=denver,co', headers: @headers
   end
 
   it "sends forecast details" do
