@@ -4,9 +4,18 @@ class ForecastFacade
   end
 
   def return_forecast
-    ForecastService.new(location).get_location
+    Forecast.new(location, forecast_service)
   end
+
 
   private
     attr_reader :location
+
+    def geocode_service
+      @_geocode_service ||= GoogleService.new(location).geocode_location
+    end
+
+    def forecast_service
+      @_forecast_service ||= ForecastService.new(geocode_service).forecast_info
+    end
 end
