@@ -5,7 +5,8 @@ class RoadTripsFacade
   end
 
   def road_trip_response
-    TravelTime.new(google_response["routes"].first["legs"].first["distance"]["value"])
+    this = google_response
+    this["routes"].first["legs"].first["distance"]["value"]
   end
 
   private
@@ -20,11 +21,10 @@ class RoadTripsFacade
     end
 
     def google_response
-      GoogleService.new()
-      JSON.parse(response.body)
+      response = google_connection.get('maps/api/directions/json?')
+      JSON.parse(response.body, symbolize_names: true)
     end
-
-
+    
     attr_reader :origin,
                 :destination
 end

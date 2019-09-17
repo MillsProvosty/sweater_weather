@@ -6,7 +6,7 @@ class GoogleService
   def geocode_location
     geo_response
   end
-
+  
   private
 
     attr_reader :location
