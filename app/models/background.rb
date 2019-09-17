@@ -8,8 +8,8 @@ class Background
   def background_response
     {background: {
       id: @id,
-      location: location
-      {
+      location: location,
+      image: {
         url: url
         }
       }

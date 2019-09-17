@@ -8,10 +8,6 @@ describe 'Account Creation Endpoint' do
       "password_confirmation": "password"
     }
 
-    @headers = {
-      'Content-Type' => 'application/json',
-      'Accept' => 'application/json'}
-
     @params2 = {
       "email": "new@example.com",
       "password": nil,
