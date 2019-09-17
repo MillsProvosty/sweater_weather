@@ -1,4 +1,5 @@
-class GatherService
+class GifForecastFacade
+  #This is a facade! WeatherGif/GiphyForecast/GifForecast
   def initialize(location)
     @location = location
   end

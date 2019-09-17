@@ -4,7 +4,7 @@ class GifsFacade
   end
 
   def return_gifs
-    GifsService.new(query).search_gifs
+    GifsService.new(query).search_gifs[:data].first[:images][:original_still][:url]
   end
 
   private

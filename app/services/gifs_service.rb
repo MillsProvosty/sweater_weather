@@ -20,6 +20,6 @@ class GifsService
 
     def giphy_response
       response = giphy_connection.get '/v1/gifs/search'
-      JSON.parse(response.body, symbolize_names: true)[:data].first[:images][:original_still][:url]
+      JSON.parse(response.body, symbolize_names: true)
     end
 end
