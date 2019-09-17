@@ -5,7 +5,7 @@ class Api::V1::RoadTripsController < ApplicationController
       destination = params["destination"]
       user = User.find_by(api_key: api_key)
     if user
-      render json: RoadTripsFacade.new(origin, destination).response
+      render json: RoadTripsFacade.new(origin, destination).road_trip_response
     else
       trip_error
     end

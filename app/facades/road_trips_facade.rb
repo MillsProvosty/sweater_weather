@@ -4,22 +4,27 @@ class RoadTripsFacade
     @destination = destination
   end
 
-  def response
-    conn = Faraday.new(:url => 'https://maps.googleapis.com') do |f|
-      f.params["origin"] = origin
-      f.params["destination"] = destination
-      f.params["key"] = ENV["GOOGLE_API_KEY"]
-      f.adapter  Faraday.default_adapter
-    end
-
-    response = conn.get '/maps/api/directions/json?'
-    response.body
-    JSON.parse(response.body)["routes"].first["legs"].first["distance"]["value"]
-
-    binding.pry
+  def road_trip_response
+    TravelTime.new(google_response)
   end
 
   private
+
+    def google_connection
+      conn = Faraday.new(:url => 'https://maps.googleapis.com') do |f|
+        f.params["origin"] = origin
+        f.params["destination"] = destination
+        f.params["key"] = ENV["GOOGLE_API_KEY"]
+        f.adapter  Faraday.default_adapter
+      end
+    end
+
+    def google_response
+      GoogleService.new()
+      JSON.parse(response.body)["routes"].first["legs"].first["distance"]["value"]
+    end
+
+
     attr_reader :origin,
                 :destination
 end
