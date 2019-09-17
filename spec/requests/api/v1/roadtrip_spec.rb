@@ -24,11 +24,8 @@ describe 'Roadtrip Endpoint' do
 
     roadtrip = JSON.parse(response.body)
 
+    expect(roadtrip).to be_kind_of(Hash)
     expect(roadtrip["summary"]).to be_kind_of(String)
-    expect(roadtrip.count).to be_kind_of(3)
+    expect(roadtrip.count).to eq(4)
   end
 end
-
-# Estimated Travel Time
-# Hour of Arrival
-# Weather at hour of arrival, includes tem, summary

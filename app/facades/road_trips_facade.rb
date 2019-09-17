@@ -17,8 +17,6 @@ class RoadTripsFacade
     ForecastService.new(geocode_response).future_weather_response
   end
 
-
-
   private
 
     attr_reader :origin,

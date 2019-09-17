@@ -9,15 +9,6 @@ class Api::V1::RoadTripsController < ApplicationController
     else
       trip_error
     end
-
-  # then I need code that will take the travel time and enter it into the darksky connection
-  # Then format the response to have temperature, Summary and that original estimated travel time.
-  # Time.at(time).utc.strftime("%-H hours and %-M minutes")
-  #Step 1: Facade => calls google API Service, gets hash with info, create/return distance PORO
-  #step 2: Facade => calls Darksky API Service, gets Weather, Creates Roadtrip object that passes/returns
-  #distance and All the info, FORMAT the JSON Response in here.
-  #Step 3: Facade calls Serializer= sets attributes
-
   end
 
   private
