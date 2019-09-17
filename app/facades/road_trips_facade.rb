@@ -5,8 +5,7 @@ class RoadTripsFacade
   end
 
   def road_trip_response
-    geocode_response
-    get_weather
+    RoadTrip.new(geocode_response, get_weather).roadtrip_response
   end
 
   def geocode_response
@@ -15,9 +14,10 @@ class RoadTripsFacade
 
 
   def get_weather
-    this = ForecastService.new(geocode_response).future_weather_response
-    binding.pry
+    ForecastService.new(geocode_response).future_weather_response
   end
+
+
 
   private
 

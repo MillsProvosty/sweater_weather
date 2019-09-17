@@ -23,7 +23,9 @@ describe 'Roadtrip Endpoint' do
     expect(response).to be_successful
 
     roadtrip = JSON.parse(response.body)
-    binding.pry
+
+    expect(roadtrip["summary"]).to be_kind_of(String)
+    expect(roadtrip.count).to be_kind_of(3)
   end
 end
 
