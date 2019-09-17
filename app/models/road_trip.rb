@@ -2,15 +2,23 @@ class RoadTrip
   def initialize(geocode, weather)
     @weather = weather
     @geocode = geocode
+    @id = "1"
   end
 
   def roadtrip_response
     {
-      hour_of_arrival: arrive,
-      summary: weather[:currently][:summary],
-      temperature: "#{temp} degrees",
-      estimated_travel_time: geocode[:routes].first[:legs].first[:duration][:text]
+      roadtrip: {
+      id: @id,
+      travel_info: {
+        hour_of_arrival: arrive,
+        estimated_travel_time: geocode[:routes].first[:legs].first[:duration][:text]
+      },
+      weather_info: {
+        summary: weather[:currently][:summary],
+        temperature: "#{temp} degrees"
+      }
     }
+  }
   end
 
   def temp
