@@ -17,8 +17,7 @@ describe 'Account Creation Endpoint' do
       "password": nil,
     }
 
-
-    get '/api/v1/users', params: @params, headers: @headers
+    post '/api/v1/users', params: @params
 
     @user = User.last
   end
@@ -28,11 +27,11 @@ describe 'Account Creation Endpoint' do
 
     key = JSON.parse(response.body)
 
-    expect(key["api_key"]).to eq(true)
+    expect(key["api_key"]).to be_kind_of(String)
   end
 
   it 'throws an error if params incorrect' do
-    get '/api/v1/users', params: @params2
+    post '/api/v1/users', params: @params2
 
     expect(response).to have_http_status(400)
 

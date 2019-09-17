@@ -2,9 +2,9 @@ class Forecast
   attr_reader :id,
               :location,
               :forecast_info
-              
+
   def initialize(location, forecast_info)
-    @id = 1
+    @id = "1"
     @location = location
     @forecast_info = forecast_info
     @current_weather = current_weather

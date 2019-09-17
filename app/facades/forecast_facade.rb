@@ -12,7 +12,7 @@ class ForecastFacade
     attr_reader :location
 
     def geocode_service
-      @_geocode_service ||= GoogleService.new(location).geocode_location
+      @_geocode_service ||= GoogleService.new.geocode_location(location)
     end
 
     def forecast_service
