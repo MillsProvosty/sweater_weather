@@ -5,7 +5,7 @@ class RoadTripsFacade
   end
 
   def road_trip_response
-    TravelTime.new(google_response)
+    TravelTime.new(google_response["routes"].first["legs"].first["distance"]["value"])
   end
 
   private
@@ -21,7 +21,7 @@ class RoadTripsFacade
 
     def google_response
       GoogleService.new()
-      JSON.parse(response.body)["routes"].first["legs"].first["distance"]["value"]
+      JSON.parse(response.body)
     end
 
 

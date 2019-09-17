@@ -19,7 +19,7 @@ describe "Login Endpoint" do
       "password": "wongpassword"
     }
 
-    get '/api/v1/sessions', params: @params, headers: @headers
+    post '/api/v1/sessions', params: @params
   end
 
   it 'returns api key for logged in user' do
@@ -27,11 +27,11 @@ describe "Login Endpoint" do
 
     api = JSON.parse(response.body)
 
-    expect(api["api_key"]).to eq(true)
+    expect(api["api_key"]).to be_kind_of(String)
   end
 
   it 'returns error with incorrect password' do
-    get '/api/v1/sessions', params: @params2, headers: @headers
+    post '/api/v1/sessions', params: @params2
 
     expect(response).to have_http_status(401)
 
