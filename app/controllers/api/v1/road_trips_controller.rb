@@ -3,12 +3,13 @@ class Api::V1::RoadTripsController < ApplicationController
       api_key = params["api_key"]
       origin = params["origin"]
       destination = params["destination"]
-      user = User.find_by(params["api_key"])
+      user = User.find_by(api_key: api_key)
     if user
-      render json: RoadTripsFacade.new(origin, destination).response
+      render json: RoadTripSerializer.new(RoadTripsFacade.new(origin, destination).response)
     else
       trip_error
     end
+
 
   end
 

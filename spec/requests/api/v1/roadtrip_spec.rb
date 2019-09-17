@@ -16,7 +16,7 @@ describe 'Roadtrip Endpoint' do
       "api_key": @api_key
     }
 
-    post '/api/v1/road_trip', params: @params, headers: @headers
+    post '/api/v1/road_trip', params: @params
   end
 
   it 'Returns successful response' do

@@ -23,5 +23,4 @@ class RoadTripsFacade
   private
     attr_reader :origin,
                 :destination
-
 end

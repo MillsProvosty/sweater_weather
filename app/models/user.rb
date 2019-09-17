@@ -1,12 +1,12 @@
 class User < ApplicationRecord
+  before_create :generate_api_key
   validates :email, uniqueness: { case_sensitive: false }, presence: true
-
+  validates_uniqueness_of :api_key
   has_secure_password
-
   before_save { self.email = self.email.to_s.downcase }
-  after_create :api_key
 
-  def api_key
-    self.update(api_key: SecureRandom.hex)
+
+  def generate_api_key
+    self.api_key = SecureRandom.hex
   end
 end
