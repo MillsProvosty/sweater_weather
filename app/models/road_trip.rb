@@ -22,7 +22,7 @@ class RoadTrip
   end
 
   def temp
-    @_temp || ((weather[:hourly][:data].first[:temperature].round * 9/5) + 32)
+    @_temp || weather[:hourly][:data].first[:temperature].round
   end
 
   def arrive
