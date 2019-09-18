@@ -12,7 +12,7 @@ class GifForecastFacade
   end
 
   def create_summaries
-    forecast_summary[:daily][:data][0..4].map do |f|
+    forecast_summary.daily_weather[0..4].map do |f|
       Summary.new(f[:summary], f[:time])
     end
   end
