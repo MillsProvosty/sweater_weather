@@ -1,8 +1,10 @@
 class RoadTrip
   def initialize(geocode, weather)
-    @weather = weather
-    @geocode = geocode
+    # @weather = weather
+    # @geocode = geocode
     @id = "1"
+    @travel_info = TravelInfo.new(geocode)
+    @weather_info = WeatherInfo.new(weather)
   end
 
   def roadtrip_response

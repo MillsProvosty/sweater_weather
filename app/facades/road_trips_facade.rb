@@ -5,6 +5,7 @@ class RoadTripsFacade
   end
 
   def road_trip_response
+    binding.pry
     RoadTrip.new(geocode_response, get_weather).roadtrip_response
   end
 
