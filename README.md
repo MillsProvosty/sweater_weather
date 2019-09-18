@@ -2,6 +2,12 @@
 
 Sweater Weather is a project designed to showcase building API endpoints, authenticating users through the use of bcrypt and assigning randomly generated api_keys, the consumption of several API's such as Googles Geocoding API, Darksky's API and Upsplash API, as well as the ability to push to production on Heroku.
 
+![Backgrounds](/app/assets/images/background.png)
+
+![Forecast](/app/assets/images/forecast.png)
+
+![Roadtrip](/app/assets/images/roadtrip.png)
+
 ## Endpoints
 
 * User account creation returns api key & sad path:
@@ -43,18 +49,18 @@ Sweater Weather is a project designed to showcase building API endpoints, authen
 * PostgreSQL database
 
 ## Run Sweater Weather on your local machine
-* System dependencies
 
-* Configuration
+1. `$ git clone git@github.com:MillsProvosty/sweater_weather.git`
+2. `$ bundle`
+3. 'bundle exec figaro install' -- add your API keys to `config/application.yml`:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+GOOGLE_API_KEY: <your Google API key>
+DARKSKY_API_KEY: <your Darksky API key>
+UNSPLASH_ACCESS_KEY: <your Unsplash Access key>
+UNSPLASH_SECRET_KEY: <your Unsplash Secret key>
+```
+4. `$ bundle exec rspec install`
+5. `$ rails db:{create,migrate}`
+6. Run test suite with `$ bundle exec rspec`
+7. Start a local server with `$ rails s` -- access Sweater Weather endpoints in browser or Postman at `localhost:3000`
