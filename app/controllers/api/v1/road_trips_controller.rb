@@ -1,4 +1,6 @@
 class Api::V1::RoadTripsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
+  
   def create
       api_key = params["api_key"]
       origin = params["origin"]
