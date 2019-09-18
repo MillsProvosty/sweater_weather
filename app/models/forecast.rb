@@ -31,6 +31,7 @@ class Forecast
   def daily_weather
     forecast_info[:daily][:data][0..7].map do |day|
       { day: Time.at(day[:time]),
+        time: day[:time],
         summary: day[:summary],
         icon: day[:icon],
         precipitation: day[:precipProbability],
