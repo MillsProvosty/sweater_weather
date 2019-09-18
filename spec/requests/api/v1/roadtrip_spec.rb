@@ -4,10 +4,6 @@ describe 'Roadtrip Endpoint' do
   before :each do
     @user = create(:user)
 
-    @headers = {
-      'Content-Type' => 'application/json',
-      'Accept' => 'application/json'}
-
     @api_key = @user.api_key
 
     @params = {

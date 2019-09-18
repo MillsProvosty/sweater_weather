@@ -7,7 +7,6 @@ class ForecastFacade
     Forecast.new(location, forecast_service)
   end
 
-
   private
     attr_reader :location
 

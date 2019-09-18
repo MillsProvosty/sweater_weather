@@ -5,10 +5,6 @@ describe "Login Endpoint" do
     @user = create(:user, email: "whatever@example.com", password: "password")
     @user2 = create(:user, email: "fakeemail@example.com", password: "password")
 
-    @headers = {
-      'Content-Type' => 'application/json',
-      'Accept' => 'application/json'}
-
     @params = {
       "email": @user.email,
       "password": @user.password
