@@ -8,6 +8,8 @@ Sweater Weather is a project designed to showcase building API endpoints, authen
 
 ![Roadtrip](/app/assets/images/roadtrip.png)
 
+![WeatherGifs](/app/assets/images/weathergifs.png)
+
 ## Endpoints
 
 * User account creation returns api key & sad path:
@@ -25,15 +27,22 @@ Sweater Weather is a project designed to showcase building API endpoints, authen
   ```
   POST  https://nameless-falls-13816.herokuapp.com/api/v1/sessions?email=new_email@hotmail.com&password=notpassword
   ```
+  
+* Gifs for five day forecast with passed in location:
+  ```
+  GET https://nameless-falls-13816.herokuapp.com/api/v1/gifs?location=denver,co
+  ```
 
 * Background gif that matches current weather:
   ```
   GET  https://nameless-falls-13816.herokuapp.com/api/v1/backgrounds?location=denver,co
   ```
+
 * Current forecast for passed in location:
   ```
   GET  https://nameless-falls-13816.herokuapp.com/api/v1/forecast?location=denver,co
   ```
+
 * Roadtrip feature returns weather for estimated time of arrival & sad path:
   ```
   POST  https://nameless-falls-13816.herokuapp.com/api/v1/road_trip?origin=Denver,Co&destination=NewOrleans,LA&api_key=6eef84e4de77bffd8132de088d9652e5
@@ -41,6 +50,7 @@ Sweater Weather is a project designed to showcase building API endpoints, authen
   ```
   POST  https://nameless-falls-13816.herokuapp.com/api/v1/road_trip?origin=Denver,Co&destination=NewOrleans,LA&api_key=6eef84e4
   ```
+
 
 ## Built Using
 
@@ -59,6 +69,7 @@ GOOGLE_API_KEY: <your Google API key>
 DARKSKY_API_KEY: <your Darksky API key>
 UNSPLASH_ACCESS_KEY: <your Unsplash Access key>
 UNSPLASH_SECRET_KEY: <your Unsplash Secret key>
+GIPHY_API_KEY: <your Giphy API key>
 ```
 4. `$ bundle exec rspec install`
 5. `$ rails db:{create,migrate}`
