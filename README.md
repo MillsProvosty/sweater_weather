@@ -1,6 +1,6 @@
 # Sweater Weather
 
-Sweater Weather is a project designed to showcase building API endpoints, authenticating users through the use of bcrypt and assigning randomly generated api_keys, the consumption of several API's such as Googles Geocoding API, Darksky's API and Upsplash API, as well as the ability to push to production on Heroku.
+Sweater Weather is a project designed to showcase building API endpoints, authenticating users through the use of bcrypt and assigning randomly generated api_keys, the consumption of several API's such as Googles Geocoding API, Darksky's API, Giphy's API and Upsplash API, as well as the ability to push to production on Heroku.
 
 ![Backgrounds](/app/assets/images/background.png)
 
@@ -27,7 +27,7 @@ Sweater Weather is a project designed to showcase building API endpoints, authen
   ```
   POST  https://nameless-falls-13816.herokuapp.com/api/v1/sessions?email=new_email@hotmail.com&password=notpassword
   ```
-  
+
 * Gifs for five day forecast with passed in location:
   ```
   GET https://nameless-falls-13816.herokuapp.com/api/v1/gifs?location=denver,co
